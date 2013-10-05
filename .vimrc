@@ -50,6 +50,9 @@ set nocompatible
 
         " show git tree in airline
         Bundle 'tpope/vim-fugitive'
+
+        " better access to buffers
+        Bundle 'vim-scripts/bufexplorer.zip'
     """
     """ Colorschemes
         Bundle 'mayansmoke'
@@ -65,7 +68,7 @@ set nocompatible
     """ Syntax highlighting
         filetype plugin indent on                   " detect file plugin+indent
         syntax on                                   " syntax highlighting
-        set t_Co=256                                " 256-colors
+        set t_Co=16                                " 256-colors
         " set term=xterm-256-color
         au BufRead, BufNewFile *.txt set ft=sh      " opens .txt with highlighting
         """ Tab colors {{{
@@ -74,14 +77,14 @@ set nocompatible
             " hi TabLineSel ctermfg=250 ctermbg=233
         """ }}}
         """ Solarized Color scheme
-            " set background=light                          " light background
-            " colors solarized
+            set background=light                          " light background
+            colors solarized
         """
         """ Jellybeans color scheme
-            set background=dark                         " dark background
-            colors jellybeans                           " select colorscheme
-            highlight Normal ctermbg=NONE               " use terminal bg
-            highlight nonText ctermbg=NONE              " use terminal bg
+            " set background=dark                         " dark background
+            " colors jellybeans                           " select colorscheme
+            " highlight Normal ctermbg=NONE               " use terminal bg
+            " highlight nonText ctermbg=NONE              " use terminal bg
         """
     ""
     """ Interface general
@@ -99,7 +102,7 @@ set nocompatible
         let &colorcolumn="80,".join(range(120,999),",")
     """
     """ Gvim
-        set guifont=Inconsolata\ for\ Powerline\ Medium\ 12
+        set guifont=Inconsolata\ for\ Powerline\ Medium\ 10
         set guioptions-=m                       " remove menubar
         " set guioptions-=T                       " remove toolbar
         set guioptions-=r                       " remove right scrollbar"
