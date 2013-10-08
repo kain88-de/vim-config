@@ -42,9 +42,6 @@ set nocompatible
         " Ledger bindings for vim
         Bundle 'ledger/vim-ledger'
 
-        " bufferline
-        Bundle 'bling/vim-bufferline'
-
         " nice stuff for csv files
         Bundle 'chrisbra/csv.vim'
 
