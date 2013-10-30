@@ -53,6 +53,9 @@ set nocompatible
 
         " better access to buffers
         Bundle 'vim-scripts/bufexplorer.zip'
+
+        " vim org mode
+        Bundle 'jceb/vim-orgmode'
     """
     """ Colorschemes
         Bundle 'mayansmoke'
