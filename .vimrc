@@ -35,6 +35,9 @@ set nocompatible
         " conkyrc syntax highlight
         Bundle 'smancill/conky-syntax.vim'
 
+        " tmux.conf syntac highlighting
+        Bundle 'tejr/vim-tmux'
+
         " Snippets like textmate
         " REQUIREMENTS: vim-addon-mw-utils, tlib_vim, vim-snippets
         Bundle 'MarcWeber/vim-addon-mw-utils'
