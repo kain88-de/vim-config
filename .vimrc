@@ -32,6 +32,12 @@ set nocompatible
         " Gnuplot syntax highlight
         Bundle 'vim-scripts/gnuplot.vim'
 
+        " conkyrc syntax highlight
+        Bundle 'smancill/conky-syntax.vim'
+
+        " tmux.conf syntac highlighting
+        Bundle 'tejr/vim-tmux'
+
         " Snippets like textmate
         " REQUIREMENTS: vim-addon-mw-utils, tlib_vim, vim-snippets
         Bundle 'MarcWeber/vim-addon-mw-utils'
@@ -109,6 +115,7 @@ set nocompatible
     """
     """ airline options
         let g:airline_powerline_fonts = 1       " needs powerline patched fonts
+        let g:airline#extensions#tabline#enabled = 1
         let g:airline_theme = 'solarized'
         let g:airline_mode_map = {
             \ '__' : '-',
