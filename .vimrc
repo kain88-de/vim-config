@@ -147,16 +147,10 @@ set nocompatible
         set foldnestmax=10                          " max 10 nested folds
         """ adopt foldlevel to file loaded, see http://superuser.com/questions/567352/how-can-i-set-foldlevelstart-in-vim-to-just-fold-nothing-initially-still-allow
         autocmd BufWinEnter * let &foldlevel = max(map(range(1, line('$')), 'foldlevel(v:val)'))
-    """
     """ Search and replace
         set incsearch                               " "live"-search
         set hlsearch                                " highlight search
-    """
-    """ Matching
-        " set matchtime=2                             " time to blink match {}
-        " set matchpairs+=<:>                         " for ci< or ci>
         set showmatch                               " tmpjump to match-bracket
-    """
     """ Return to last edit position when opening files
         augroup opening
             autocmd!
@@ -165,31 +159,30 @@ set nocompatible
                 \     exe "normal! g`\"" |
                 \ endif
         augroup END
-    """
-"""
 
 """ Files
     set encoding=utf8                               " Have utf8 encoding
     set autochdir                                   " always use curr. dir.
     set updatecount=50                              " update swp after 50chars
-    """ Persistent undo. Requires Vim 7.3 {{{
+    set nobackup
+    set nowritebackup
+    """ Persistent undo. Requires Vim 7.3
         if has('persistent_undo') && exists("&undodir")
             set undodir=$HOME/.vim/undo/            " where to store undofiles
             set undofile                            " enable undofile
             set undolevels=500                      " max undos stored
             set undoreload=10000                    " buffer stored undos
         endif
-    """
     """ add filetype detection for some filetypes
     augroup filetypes
         autocmd!
         au BufNewFile,BufRead *.ldg,*.ledger setf ledger | comp ledger
         au BufNewFile,BufRead *.plt,*.plot setf gnuplot
+        au BufNewFile,BufRead *.md setf markdown
         au BufNewFile,BufRead *.pxd,*.pyx let g:PyFlakeCheckers = 'pep8'
     augroup END
     let g:tex_flavour='latex'                       " vim latex plugin behaviour for vim 7
     let g:tex_conceal=''                            " fix make vim-indent and latex live in peace
-"""
 
 """ Text formatting
     set autoindent                                  " preserve indentation
@@ -209,8 +202,6 @@ set nocompatible
             autocmd!
             au FileType c,cpp setlocal comments -=:// comments +=f://
         augroup END
-    """
-"""
 
 """ Keybindings
     """ General
@@ -249,7 +240,7 @@ set nocompatible
         vnoremap <silent> * :call VisualSelection('f')<CR>
         vnoremap <silent> # :call VisualSelection('b')<CR>
         " fast saving
-        nnoremap <leader>w :w<cr>
+        nnoremap <leader>s :w<cr>
     """
     """ Functions or fancy binds
         """ Toggle relativenumber using <leader>r
