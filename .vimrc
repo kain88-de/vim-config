@@ -55,7 +55,7 @@ set nocompatible
         Bundle 'tpope/vim-fugitive'
 
         " better access to buffers
-        Bundle 'vim-scripts/bufexplorer.zip'
+        Bundle 'jlanzarotta/bufexplorer'
 
         " vim org mode
         Bundle 'jceb/vim-orgmode'
