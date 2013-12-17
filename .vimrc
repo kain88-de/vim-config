@@ -115,7 +115,6 @@ set nocompatible
     """
     """ airline options
         let g:airline_powerline_fonts = 1       " needs powerline patched fonts
-        let g:airline#extensions#tabline#enabled = 1
         let g:airline_theme = 'solarized'
         let g:airline_mode_map = {
             \ '__' : '-',
