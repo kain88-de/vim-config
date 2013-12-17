@@ -57,6 +57,9 @@ set nocompatible
         " better access to buffers
         Bundle 'jlanzarotta/bufexplorer'
 
+        " per project settings
+        Bundle 'Ralt/psettings'
+
         " vim org mode
         Bundle 'jceb/vim-orgmode'
     """
