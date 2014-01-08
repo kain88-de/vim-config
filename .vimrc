@@ -62,7 +62,12 @@ set nocompatible
 
         " vim org mode
         Bundle 'jceb/vim-orgmode'
-    """
+
+        " markdown syntax plugin
+        " Bundle 'tpope/vim-markdown'
+
+        " pandoc syntax plus sugar
+        Bundle 'vim-pandoc/vim-pandoc'
     """ Colorschemes
         Bundle 'mayansmoke'
         Bundle 'nanotech/jellybeans.vim'
