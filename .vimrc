@@ -26,18 +26,6 @@ set nocompatible
         " show indendation level
         Bundle 'Yggdroot/indentLine'
 
-        " Vala syntax highlighting
-        Bundle 'rainux/vim-vala'
-
-        " Gnuplot syntax highlight
-        Bundle 'vim-scripts/gnuplot.vim'
-
-        " conkyrc syntax highlight
-        Bundle 'smancill/conky-syntax.vim'
-
-        " tmux.conf syntac highlighting
-        Bundle 'tejr/vim-tmux'
-
         " Snippets like textmate
         " REQUIREMENTS: vim-addon-mw-utils, tlib_vim, vim-snippets
         Bundle 'MarcWeber/vim-addon-mw-utils'
@@ -68,6 +56,14 @@ set nocompatible
 
         " pandoc syntax plus sugar
         Bundle 'vim-pandoc/vim-pandoc'
+
+    """ Syntax files
+        Bundle 'rainux/vim-vala'
+        Bundle 'vim-scripts/gnuplot.vim'
+        Bundle 'smancill/conky-syntax.vim'
+        Bundle 'tejr/vim-tmux'
+        Bundle 'vim-scripts/scons.vim'
+
     """ Colorschemes
         Bundle 'mayansmoke'
         Bundle 'nanotech/jellybeans.vim'
