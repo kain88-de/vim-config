@@ -23,6 +23,9 @@ set nocompatible
         " pyflakes + pep8 plugin
         Bundle 'andviro/flake8-vim'
 
+        " zen mode
+        Bundle 'mikewest/vimroom'
+
         " show indendation level
         Bundle 'Yggdroot/indentLine'
 
@@ -56,6 +59,13 @@ set nocompatible
 
         " pandoc syntax plus sugar
         Bundle 'vim-pandoc/vim-pandoc'
+
+        " american abbreviations
+        Bundle 'tpope/vim-abolish'
+        Bundle 'nelstrom/vim-americanize'
+
+        " trailing whitespace function
+        Bundle 'bronson/vim-trailing-whitespace'
 
     """ Syntax files
         Bundle 'rainux/vim-vala'
@@ -134,6 +144,9 @@ set nocompatible
             \ '' : 'S',
             \ }
     """
+    """ VimRoom
+        let g:vimroom_width=120
+        let g:vimroom_clear_line_numbers=0
 """
 
 """ General Settings
@@ -226,7 +239,7 @@ set nocompatible
         " disable ex-mode for good
         nnoremap Q <nop>
         " map noh to <leader>l
-        nnoremap <leader>l :nohlsearch<CR><C-L>
+        nnoremap <leader>l :nohlsearch<CR>
         " make Y consistend with D and C
         nnoremap Y y$
         " easy window navigation
@@ -242,27 +255,14 @@ set nocompatible
         nnoremap H 0
         nnoremap L $
         " remove trailing whitespaces
-        nnoremap <leader>dw :%s/\s\+$//<cr>
+        " nnoremap <leader>dw :%s/\s\+$//<cr>:nohlsearch<cr>
+        nnoremap <leader>dw :FixWhitespace<cr>
         " use <leader>rp to reformat a paragraph
         nnoremap <leader>rp gqap
         vnoremap <leader>rp gp
         " visual mode pressing * or # searches for current selection
         vnoremap <silent> * :call VisualSelection('f')<CR>
         vnoremap <silent> # :call VisualSelection('b')<CR>
-        " fast saving
-        nnoremap <leader>s :w<cr>
-    """
-    """ Functions or fancy binds
-        """ Toggle relativenumber using <leader>r
-            nnoremap <leader>r :call NumberToggle()<CR>
-            function! NumberToggle()
-                if(&relativenumber == 1)
-                    set number
-                else
-                    set relativenumber
-                endif
-            endfunction
-        """
     """
     """ Learn vim scripting the Hard way examples {{{
         " put single quotes around visual marked text and exit to normal-mode
@@ -272,5 +272,9 @@ set nocompatible
         nnoremap <down> <nop>
         nnoremap <left> <nop>
         nnoremap <right> <nop>
+        inoremap <up> <nop>
+        inoremap <down> <nop>
+        inoremap <left> <nop>
+        inoremap <right> <nop>
     """
 """
