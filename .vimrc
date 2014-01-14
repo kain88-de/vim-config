@@ -260,6 +260,9 @@ set nocompatible
         " use <leader>rp to reformat a paragraph
         nnoremap <leader>rp gqap
         vnoremap <leader>rp gp
+        " save file with CTRL-S
+        nnoremap <C-s> :w<cr>
+        inoremap <C-s> <esc>:w<cr>a
         " visual mode pressing * or # searches for current selection
         vnoremap <silent> * :call VisualSelection('f')<CR>
         vnoremap <silent> # :call VisualSelection('b')<CR>
