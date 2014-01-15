@@ -1,89 +1,61 @@
 " vimconf is not vi-compatible
 set nocompatible
-
 """ vundle Plugin Manager
     """ Initiallize vundle
         filetype off
         set rtp+=~/.vim/bundle/vundle/
         call vundle#rc()
-    """
     """ new functionality repos, uncomment to disable a plugin
         " recursive vundle update
         Bundle 'gmarik/vundle'
-
         " much much nicer status line
         Bundle 'bling/vim-airline'
-
+        " show git tree in airline
+        Bundle 'tpope/vim-fugitive'
         " powerfull comment engine
         Bundle 'vim-scripts/tComment'
-
         " automatic closing of parenthesis,brackets
         Bundle 'Raimondi/delimitMate'
-
         " pyflakes + pep8 plugin
         Bundle 'andviro/flake8-vim'
-
         " zen mode
         Bundle 'mikewest/vimroom'
-
         " show indendation level
         Bundle 'Yggdroot/indentLine'
-
         " Snippets like textmate
         " REQUIREMENTS: vim-addon-mw-utils, tlib_vim, vim-snippets
         Bundle 'MarcWeber/vim-addon-mw-utils'
         Bundle 'tomtom/tlib_vim'
-        " Bundle 'honza/vim-snippets'
         Bundle 'garbas/vim-snipmate'
-
         " Ledger bindings for vim
         Bundle 'ledger/vim-ledger'
-
         " nice stuff for csv files
         Bundle 'chrisbra/csv.vim'
-
-        " show git tree in airline
-        Bundle 'tpope/vim-fugitive'
-
         " better access to buffers
         Bundle 'jlanzarotta/bufexplorer'
-
         " per project settings
         Bundle 'Ralt/psettings'
-
         " vim org mode
         Bundle 'jceb/vim-orgmode'
-
-        " markdown syntax plugin
-        " Bundle 'tpope/vim-markdown'
-
         " pandoc syntax plus sugar
         Bundle 'vim-pandoc/vim-pandoc'
-
         " american abbreviations
         Bundle 'tpope/vim-abolish'
         Bundle 'nelstrom/vim-americanize'
-
         " trailing whitespace function
         Bundle 'bronson/vim-trailing-whitespace'
-
     """ Syntax files
         Bundle 'rainux/vim-vala'
         Bundle 'vim-scripts/gnuplot.vim'
         Bundle 'smancill/conky-syntax.vim'
         Bundle 'tejr/vim-tmux'
         Bundle 'vim-scripts/scons.vim'
-
     """ Colorschemes
         Bundle 'mayansmoke'
         Bundle 'nanotech/jellybeans.vim'
         Bundle 'gregsexton/Atom'
-        Bundle 'noahfrederick/Hemisu'
         Bundle 'bwyrosdick/vim-blackboard'
         Bundle 'altercation/vim-colors-solarized'
-    """
-""
-
 """ User interface
     """ Syntax highlighting
         filetype plugin indent on                   " detect file plugin+indent
@@ -91,22 +63,14 @@ set nocompatible
         set t_Co=16                                " 256-colors
         " set term=xterm-256-color
         au BufRead, BufNewFile *.txt set ft=sh      " opens .txt with highlighting
-        """ Tab colors {{{
-            " hi TabLineFill ctermfg=NONE ctermbg=233
-            " hi TabLine ctermfg=241 ctermbg=233
-            " hi TabLineSel ctermfg=250 ctermbg=233
-        """ }}}
         """ Solarized Color scheme
             set background=light                          " light background
             colors solarized
-        """
         """ Jellybeans color scheme
             " set background=dark                         " dark background
             " colors jellybeans                           " select colorscheme
             " highlight Normal ctermbg=NONE               " use terminal bg
             " highlight nonText ctermbg=NONE              " use terminal bg
-        """
-    ""
     """ Interface general
         set number                                  " line numbers
         set scrolloff=4                             " lines above/below cursor
@@ -120,7 +84,6 @@ set nocompatible
         set wildmode=longest,list                   " bash like autocompletion
         "show marker after 80 chars and another after 120
         let &colorcolumn="80,".join(range(120,999),",")
-    """
     """ Gvim
         set guifont=Inconsolata\ for\ Powerline\ Medium\ 10
         set guioptions-=m                       " remove menubar
@@ -143,16 +106,12 @@ set nocompatible
             \ 'S'  : 'S',
             \ '' : 'S',
             \ }
-    """
     """ VimRoom
         let g:vimroom_width=120
         let g:vimroom_clear_line_numbers=0
-"""
-
 """ General Settings
     set hidden                                      " buffer change, more undo
     set history=1000                                " default 20
-    " set iskeyword+=_,$,@,%,#                        " not word dividers
     set laststatus=2                                " always show statusline
     set linebreak                                   " don't cut words oz wrap
     set list                                        " displaying listchars
@@ -174,6 +133,7 @@ set nocompatible
         set incsearch                               " "live"-search
         set hlsearch                                " highlight search
         set showmatch                               " tmpjump to match-bracket
+        set ignorecase                              " by default ignore case
     """ Return to last edit position when opening files
         augroup opening
             autocmd!
@@ -182,7 +142,6 @@ set nocompatible
                 \     exe "normal! g`\"" |
                 \ endif
         augroup END
-
 """ Files
     set encoding=utf8                               " Have utf8 encoding
     set autochdir                                   " always use curr. dir.
@@ -202,30 +161,22 @@ set nocompatible
         au BufNewFile,BufRead *.ldg,*.ledger setf ledger | comp ledger
         au BufNewFile,BufRead *.plt,*.plot setf gnuplot
         au BufNewFile,BufRead *.md setf markdown
+        " mccabe and flake8 don't work with cython files
         au BufNewFile,BufRead *.pxd,*.pyx let g:PyFlakeCheckers = 'pep8'
     augroup END
     let g:tex_flavour='latex'                       " vim latex plugin behaviour for vim 7
     let g:tex_conceal=''                            " fix make vim-indent and latex live in peace
-
 """ Text formatting
     set autoindent                                  " preserve indentation
     set backspace=indent,eol,start                  " smart backspace
     set cinkeys-=0#                                 " don't force # indentation
     set expandtab                                   " no real tabs
-    set ignorecase                                  " by default ignore case
-    " set nrformats+=alpha                            " incr/decr letters C-a/-x
     set shiftround                                  " be clever with tabs
     set shiftwidth=4                                " default 8
     set smartcase                                   " sensitive with uppercase
     set smarttab                                    " tab to 0,4,8 etc.
     set softtabstop=4                               " "tab" feels like <tab>
     set tabstop=4                                   " replace <TAB> w/4 spaces
-    """ Only auto-comment newline for block comments
-        augroup cpp_comments
-            autocmd!
-            au FileType c,cpp setlocal comments -=:// comments +=f://
-        augroup END
-
 """ Keybindings
     """ General
         " Yank{copy) to system clipboard
@@ -263,11 +214,13 @@ set nocompatible
         " save file with CTRL-S
         nnoremap <C-s> :w<cr>
         inoremap <C-s> <esc>:w<cr>a
+        " close window with <C-w> like other apps
+        nnoremap <C-w> :q<cr>
         " visual mode pressing * or # searches for current selection
         vnoremap <silent> * :call VisualSelection('f')<CR>
         vnoremap <silent> # :call VisualSelection('b')<CR>
-    """
-    """ Learn vim scripting the Hard way examples {{{
+        nnoremap <F5> :make<cr>
+    """ Learn vim scripting the Hard way examples
         " put single quotes around visual marked text and exit to normal-mode
         vnoremap <leader>' <esc>`<i'<esc>`>a'<esc>
         " deavtivate arrow key in normal mode
@@ -279,5 +232,3 @@ set nocompatible
         inoremap <down> <nop>
         inoremap <left> <nop>
         inoremap <right> <nop>
-    """
-"""
