@@ -112,7 +112,7 @@ snippet cha
 	\chapter{${1:chapter name}}
 	\label{cha:${2:$1}}
 	${3}
-# Section
+# ection
 snippet sec
 	\section{${1:section name}}
 	\label{sec:${2:$1}}
@@ -191,6 +191,8 @@ snippet under
 	\underline{${1:text}}
 snippet emp
 	\emph{${1:text}}
+snippet nn
+	\nonumber
 snippet sc
 	\textsc{${1:text}}
 #Choosing font
@@ -204,12 +206,11 @@ snippet tt
 snippet ft
 	\footnote{${1:text}}
 snippet fig
-	\begin{figure}
-	\begin{center}
-		\includegraphics[scale=${1}]{Figures/${2}}
-	\end{center}
-	\caption{${3}}
-	\label{fig:${4}}
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[scale=${1}]{figures/${2:filename}}
+		\caption{${3}}
+		\label{fig:${4:$2}}
 	\end{figure}
 	${5}
 snippet tikz
