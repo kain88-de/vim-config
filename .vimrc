@@ -85,7 +85,7 @@ set nocompatible
         "show marker after 80 chars and another after 120
         let &colorcolumn="80,".join(range(120,999),",")
     """ Gvim
-        set guifont=Inconsolata\ for\ Powerline\ Medium\ 10
+        set guifont=Inconsolata\ for\ Powerline\ Medium\ 12
         set guioptions-=m                       " remove menubar
         " set guioptions-=T                       " remove toolbar
         set guioptions-=r                       " remove right scrollbar"
@@ -163,8 +163,8 @@ set nocompatible
         au BufNewFile,BufRead *.md setf markdown
         " mccabe and flake8 don't work with cython files
         au BufNewFile,BufRead *.pxd,*.pyx let g:PyFlakeCheckers = 'pep8'
+        au BufNewFile,BufRead *.tex set spell
     augroup END
-    let g:tex_flavour='latex'                       " vim latex plugin behaviour for vim 7
     let g:tex_conceal=''                            " fix make vim-indent and latex live in peace
 """ Text formatting
     set autoindent                                  " preserve indentation
@@ -211,15 +211,16 @@ set nocompatible
         " use <leader>rp to reformat a paragraph
         nnoremap <leader>rp gqap
         vnoremap <leader>rp gp
-        " save file with CTRL-S
-        nnoremap <C-s> :w<cr>
-        inoremap <C-s> <esc>:w<cr>a
-        " close window with <C-w> like other apps
-        nnoremap <C-w> :q<cr>
+        " save file with CTRL-S only if there are changes
+        nnoremap <C-s> :update<cr>
+        inoremap <C-s> <esc>:update<cr>a
         " visual mode pressing * or # searches for current selection
         vnoremap <silent> * :call VisualSelection('f')<CR>
         vnoremap <silent> # :call VisualSelection('b')<CR>
         nnoremap <F5> :make<cr>
+        " short cut to paragraph reformating. 
+        nnoremap <leader>p vipgq$
+        vnoremap <leader>p ipgq$v
     """ Learn vim scripting the Hard way examples
         " put single quotes around visual marked text and exit to normal-mode
         vnoremap <leader>' <esc>`<i'<esc>`>a'<esc>
