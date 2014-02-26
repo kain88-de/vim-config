@@ -35,8 +35,6 @@ set nocompatible
         Bundle 'jlanzarotta/bufexplorer'
         " per project settings
         Bundle 'Ralt/psettings'
-        " vim org mode
-        Bundle 'jceb/vim-orgmode'
         " pandoc syntax plus sugar
         Bundle 'vim-pandoc/vim-pandoc'
         " american abbreviations
@@ -163,9 +161,14 @@ set nocompatible
         au BufNewFile,BufRead *.md setf markdown
         " mccabe and flake8 don't work with cython files
         au BufNewFile,BufRead *.pxd,*.pyx let g:PyFlakeCheckers = 'pep8'
-        au BufNewFile,BufRead *.tex set spell
+        au BufNewFile,BufRead *.tex call SetLatexOptions()
     augroup END
     let g:tex_conceal=''                            " fix make vim-indent and latex live in peace
+""" Functions
+    function SetLatexOptions()
+        set foldmethod=marker
+        set spell
+    endfunction
 """ Text formatting
     set autoindent                                  " preserve indentation
     set backspace=indent,eol,start                  " smart backspace
@@ -217,8 +220,8 @@ set nocompatible
         " visual mode pressing * or # searches for current selection
         vnoremap <silent> * :call VisualSelection('f')<CR>
         vnoremap <silent> # :call VisualSelection('b')<CR>
-        nnoremap <F5> :make<cr>
-        " short cut to paragraph reformating. 
+        nnoremap <F5> :update<cr>:make<cr>
+        " short cut to paragraph reformating
         nnoremap <leader>p vipgq$
         vnoremap <leader>p ipgq$v
     """ Learn vim scripting the Hard way examples
