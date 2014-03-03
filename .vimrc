@@ -168,6 +168,7 @@ set nocompatible
     function SetLatexOptions()
         set foldmethod=marker
         set spell
+        syntax spell toplevel                       " this is needed for spellchecking to for on the whole file
     endfunction
 """ Text formatting
     set autoindent                                  " preserve indentation
