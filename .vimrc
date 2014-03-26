@@ -8,38 +8,56 @@ set nocompatible
     """ new functionality repos, uncomment to disable a plugin
         " recursive vundle update
         Bundle 'gmarik/vundle'
+
         " much much nicer status line
         Bundle 'bling/vim-airline'
+
         " show git tree in airline
         Bundle 'tpope/vim-fugitive'
+
         " powerfull comment engine
         Bundle 'vim-scripts/tComment'
+
         " automatic closing of parenthesis,brackets
         Bundle 'Raimondi/delimitMate'
-        " pyflakes + pep8 plugin
-        Bundle 'andviro/flake8-vim'
+
         " zen mode
         Bundle 'mikewest/vimroom'
+
+        " make a tasklist from FIXME, TODO comments
+        Bundle 'tasklist.vim'
+
         " show indendation level
         Bundle 'Yggdroot/indentLine'
+
+        " python IDE support
+        Bundle 'klen/python-mode'
+
         " Snippets like textmate
         " REQUIREMENTS: vim-addon-mw-utils, tlib_vim, vim-snippets
         Bundle 'MarcWeber/vim-addon-mw-utils'
         Bundle 'tomtom/tlib_vim'
         Bundle 'garbas/vim-snipmate'
+
         " Ledger bindings for vim
         Bundle 'ledger/vim-ledger'
+
         " nice stuff for csv files
         Bundle 'chrisbra/csv.vim'
+
         " better access to buffers
         Bundle 'jlanzarotta/bufexplorer'
+
         " per project settings
         Bundle 'Ralt/psettings'
+
         " pandoc syntax plus sugar
         Bundle 'vim-pandoc/vim-pandoc'
+
         " american abbreviations
         Bundle 'tpope/vim-abolish'
         Bundle 'nelstrom/vim-americanize'
+
         " trailing whitespace function
         Bundle 'bronson/vim-trailing-whitespace'
     """ Syntax files
@@ -87,26 +105,6 @@ set nocompatible
         set guioptions-=m                       " remove menubar
         " set guioptions-=T                       " remove toolbar
         set guioptions-=r                       " remove right scrollbar"
-    """
-    """ airline options
-        let g:airline_powerline_fonts = 1       " needs powerline patched fonts
-        let g:airline_theme = 'solarized'
-        let g:airline_mode_map = {
-            \ '__' : '-',
-            \ 'n'  : 'N',
-            \ 'i'  : 'I',
-            \ 'R'  : 'R',
-            \ 'c'  : 'C',
-            \ 'v'  : 'V',
-            \ 'V'  : 'V',
-            \ '' : 'V',
-            \ 's'  : 'S',
-            \ 'S'  : 'S',
-            \ '' : 'S',
-            \ }
-    """ VimRoom
-        let g:vimroom_width=120
-        let g:vimroom_clear_line_numbers=0
 """ General Settings
     set hidden                                      " buffer change, more undo
     set history=1000                                " default 20
@@ -160,7 +158,6 @@ set nocompatible
         au BufNewFile,BufRead *.plt,*.plot setf gnuplot
         au BufNewFile,BufRead *.md setf markdown
         " mccabe and flake8 don't work with cython files
-        au BufNewFile,BufRead *.pxd,*.pyx let g:PyFlakeCheckers = 'pep8'
         au BufNewFile,BufRead *.tex call SetLatexOptions()
     augroup END
     let g:tex_conceal=''                            " fix make vim-indent and latex live in peace
@@ -181,6 +178,38 @@ set nocompatible
     set smarttab                                    " tab to 0,4,8 etc.
     set softtabstop=4                               " "tab" feels like <tab>
     set tabstop=4                                   " replace <TAB> w/4 spaces
+""" plugins
+    """ python-mode
+        let g:pymode = 1                            " enable everything
+        let g:pymode_trim_whitespaces = 1
+        let g:pymode_folding = 0                    " use global folding setting
+        let g:pymode_doc = 1
+        let g:pymode_doc_bind = '<leader>d'         " bind normal mode for docs
+        nnoremap <leader>pep :PymodeLintAuto<CR>
+        let g:pymode_lint_on_write = 1              " lint check on every save
+        " for cython files only check pep8
+        au BufNewFile,BufRead *.pxd,*.pyx let g:pymode_lint_checkers = ['pep8']
+        let g:pymode_syntax_all = 1
+        let g:pymode_syntax_print_as_function = 1
+    """ VimRoom
+        let g:vimroom_width=120
+        let g:vimroom_clear_line_numbers=0
+    """ airline options
+        let g:airline_powerline_fonts = 1       " needs powerline patched fonts
+        let g:airline_theme = 'solarized'
+        let g:airline_mode_map = {
+            \ '__' : '-',
+            \ 'n'  : 'N',
+            \ 'i'  : 'I',
+            \ 'R'  : 'R',
+            \ 'c'  : 'C',
+            \ 'v'  : 'V',
+            \ 'V'  : 'V',
+            \ '' : 'V',
+            \ 's'  : 'S',
+            \ 'S'  : 'S',
+            \ '' : 'S',
+            \ }
 """ Keybindings
     """ General
         " Yank{copy) to system clipboard
@@ -209,8 +238,8 @@ set nocompatible
         " better jumps to line start and end
         nnoremap H 0
         nnoremap L $
+        " close buffers :b
         " remove trailing whitespaces
-        " nnoremap <leader>dw :%s/\s\+$//<cr>:nohlsearch<cr>
         nnoremap <leader>dw :FixWhitespace<cr>
         " use <leader>rp to reformat a paragraph
         nnoremap <leader>rp gqap
@@ -225,6 +254,8 @@ set nocompatible
         " short cut to paragraph reformating
         nnoremap <leader>p vipgq$
         vnoremap <leader>p ipgq$v
+        " tasklist buttons
+        nnoremap T :Tasklist<CR>
     """ Learn vim scripting the Hard way examples
         " put single quotes around visual marked text and exit to normal-mode
         vnoremap <leader>' <esc>`<i'<esc>`>a'<esc>
