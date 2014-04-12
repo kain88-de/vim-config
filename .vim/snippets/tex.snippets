@@ -46,14 +46,14 @@ snippet gat
 	\end{gather$1}
 # Equation
 snippet align
-	\begin{align}
+	\begin{align}%{{{
 		${1}
-	\end{align}
+	\end{align}%}}}
 # Equation
 snippet align*
-	\begin{align*}
+	\begin{align*}%{{{
 		${1}
-	\end{align*}
+	\end{align*}%}}}
 # Unnumbered Equation
 snippet \
 	\[
@@ -206,12 +206,12 @@ snippet tt
 snippet ft
 	\footnote{${1:text}}
 snippet fig
-	\begin{figure}[!h]
+	\begin{figure}[!h]%{{{
 		\centering
 		\includegraphics[scale=${1}]{figures/${2:filename}}
 		\caption{${3}}
 		\label{fig:${4:$2}}
-	\end{figure}
+	\end{figure}%}}}
 	${5}
 snippet tikz
 	\begin{figure}
