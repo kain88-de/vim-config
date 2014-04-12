@@ -231,6 +231,8 @@ set nocompatible
         noremap <C-j> <C-w>j
         noremap <C-k> <C-w>k
         noremap <C-l> <C-w>l
+        " close buffer for good
+        noremap Q :bd<cr>
         " open vimrc in vsplit window
         nnoremap <leader>ev :vsplit $MYVIMRC<cr>
         " source vimrc
