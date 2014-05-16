@@ -159,10 +159,12 @@ set nocompatible
         au BufNewFile,BufRead *.md setf markdown
         " mccabe and flake8 don't work with cython files
         au BufNewFile,BufRead *.tex call SetLatexOptions()
+        au BufNewFile,BufRead COMMIT_EDITMSG setlocal spell
     augroup END
     let g:tex_conceal=''                            " fix make vim-indent and latex live in peace
 """ Functions
     function SetLatexOptions()
+        set filetype=tex
         set foldmethod=marker
         set spell
         syntax spell toplevel                       " this is needed for spellchecking to for on the whole file
@@ -183,7 +185,7 @@ set nocompatible
         let g:pymode = 1                            " enable everything
         let g:pymode_trim_whitespaces = 1
         let g:pymode_folding = 0                    " use global folding setting
-        let g:pymode_doc = 1
+        let g:pymode_doc = 0
         let g:pymode_doc_bind = '<leader>d'         " bind normal mode for docs
         nnoremap <leader>pep :PymodeLintAuto<CR>
         let g:pymode_lint_on_write = 1              " lint check on every save
