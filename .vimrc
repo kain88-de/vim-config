@@ -24,6 +24,9 @@ set nocompatible
         " zen mode
         Bundle 'mikewest/vimroom'
 
+        " easy table generation and text line ups
+        Bundle 'godlygeek/tabular'
+
         " make a tasklist from FIXME, TODO comments
         Bundle 'tasklist.vim'
 
@@ -101,7 +104,7 @@ set nocompatible
         "show marker after 80 chars and another after 120
         let &colorcolumn="80,".join(range(120,999),",")
     """ Gvim
-        set guifont=Inconsolata\ for\ Powerline\ Medium\ 12
+        set guifont=Inconsolata\ for\ Powerline\ Medium\ 10
         set guioptions-=m                       " remove menubar
         " set guioptions-=T                       " remove toolbar
         set guioptions-=r                       " remove right scrollbar"
@@ -260,6 +263,9 @@ set nocompatible
         vnoremap <leader>p ipgq$v
         " tasklist buttons
         nnoremap T :Tasklist<CR>
+        " Insert a table headers separator line below the current line,
+        " -- adjusted to the current line as headers line
+        nnoremap <F4>t yyp:s/\v\S.{-}\ze(\s{2}\S\|$)/\=substitute(submatch(0),'.','-','g')/g<CR>
     """ Learn vim scripting the Hard way examples
         " put single quotes around visual marked text and exit to normal-mode
         vnoremap <leader>' <esc>`<i'<esc>`>a'<esc>
