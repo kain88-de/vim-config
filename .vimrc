@@ -160,6 +160,7 @@ set nocompatible
         au BufNewFile,BufRead *.ldg,*.ledger setf ledger | comp ledger
         au BufNewFile,BufRead *.plt,*.plot setf gnuplot
         au BufNewFile,BufRead *.md setf markdown
+        au BufNewFile,BufRead *.rst set shiftwidth=3
         " mccabe and flake8 don't work with cython files
         au BufNewFile,BufRead *.tex call SetLatexOptions()
         au BufNewFile,BufRead COMMIT_EDITMSG setlocal spell
