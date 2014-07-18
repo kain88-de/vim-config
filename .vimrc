@@ -34,7 +34,7 @@ set nocompatible
         Bundle 'Yggdroot/indentLine'
 
         " python IDE support
-        Bundle 'klen/python-mode'
+        " Bundle 'klen/python-mode'
 
         " Snippets like textmate
         " REQUIREMENTS: vim-addon-mw-utils, tlib_vim, vim-snippets
