@@ -75,6 +75,7 @@ set nocompatible
         Bundle 'gregsexton/Atom'
         Bundle 'bwyrosdick/vim-blackboard'
         Bundle 'altercation/vim-colors-solarized'
+        Bundle 'lsdr/monokai'
 """ User interface
     """ Syntax highlighting
         filetype plugin indent on                   " detect file plugin+indent
@@ -83,8 +84,15 @@ set nocompatible
         " set term=xterm-256-color
         au BufRead, BufNewFile *.txt set ft=sh      " opens .txt with highlighting
         """ Solarized Color scheme
-            set background=light                          " light background
-            colors solarized
+            if has('gui_running')
+                set background=dark
+                colorscheme monokai
+                let g:airline_theme = 'molokai'
+            else
+                set background=light                          " light background
+                colorscheme solarized
+                let g:airline_theme = 'solarized'
+            endif
         """ Jellybeans color scheme
             " set background=dark                         " dark background
             " colors jellybeans                           " select colorscheme
@@ -104,7 +112,7 @@ set nocompatible
         "show marker after 80 chars and another after 120
         let &colorcolumn="80,".join(range(120,999),",")
     """ Gvim
-        set guifont=Inconsolata\ for\ Powerline\ Medium\ 10
+        set guifont=Inconsolata\ for\ Powerline\ Medium\ 13
         set guioptions-=m                       " remove menubar
         " set guioptions-=T                       " remove toolbar
         set guioptions-=r                       " remove right scrollbar"
@@ -202,7 +210,6 @@ set nocompatible
         let g:vimroom_clear_line_numbers=0
     """ airline options
         let g:airline_powerline_fonts = 1       " needs powerline patched fonts
-        let g:airline_theme = 'solarized'
         let g:airline_mode_map = {
             \ '__' : '-',
             \ 'n'  : 'N',
