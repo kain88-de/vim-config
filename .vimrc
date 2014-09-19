@@ -76,28 +76,22 @@ set nocompatible
         Bundle 'bwyrosdick/vim-blackboard'
         Bundle 'altercation/vim-colors-solarized'
         Bundle 'lsdr/monokai'
+        Bundle 'chriskempson/base16-vim'
 """ User interface
     """ Syntax highlighting
         filetype plugin indent on                   " detect file plugin+indent
         syntax on                                   " syntax highlighting
         set t_Co=16                                " 256-colors
-        " set term=xterm-256-color
+        set background=dark
         au BufRead, BufNewFile *.txt set ft=sh      " opens .txt with highlighting
         """ Solarized Color scheme
             if has('gui_running')
-                set background=dark
                 colorscheme monokai
-                let g:airline_theme = 'molokai'
             else
-                set background=light                          " light background
-                colorscheme solarized
-                let g:airline_theme = 'solarized'
+                let base16_scheme=$BASE16_SCHEME
+                let base16_color='base16-'.base16_scheme
+                execute 'colorscheme '.base16_color
             endif
-        """ Jellybeans color scheme
-            " set background=dark                         " dark background
-            " colors jellybeans                           " select colorscheme
-            " highlight Normal ctermbg=NONE               " use terminal bg
-            " highlight nonText ctermbg=NONE              " use terminal bg
     """ Interface general
         set number                                  " line numbers
         set scrolloff=4                             " lines above/below cursor
