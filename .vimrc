@@ -111,6 +111,10 @@ set nocompatible
         " set guioptions-=T                       " remove toolbar
         set guioptions-=r                       " remove right scrollbar"
         let mapleader="\<Space>"
+        " stay at cursor position when leaving insert-mode
+        autocmd InsertEnter * let CursorColumnI = col('.')
+        autocmd CursorMovedI * let CursorColumnI = col('.')
+        autocmd InsertLeave * if col('.') != CursorColumnI | call cursor(0, col('.')+1) | endif
 """ General Settings
     set hidden                                      " buffer change, more undo
     set history=1000                                " default 20
