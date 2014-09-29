@@ -110,6 +110,7 @@ set nocompatible
         set guioptions-=m                       " remove menubar
         " set guioptions-=T                       " remove toolbar
         set guioptions-=r                       " remove right scrollbar"
+        let mapleader="\<Space>"
 """ General Settings
     set hidden                                      " buffer change, more undo
     set history=1000                                " default 20
