@@ -21,9 +21,6 @@ set nocompatible
         " automatic closing of parenthesis,brackets
         Bundle 'Raimondi/delimitMate'
 
-        " zen mode
-        Bundle 'mikewest/vimroom'
-
         " easy table generation and text line ups
         Bundle 'godlygeek/tabular'
 
@@ -53,16 +50,6 @@ set nocompatible
 
         " better access to buffers
         Bundle 'jlanzarotta/bufexplorer'
-
-        " per project settings
-        Bundle 'Ralt/psettings'
-
-        " pandoc syntax plus sugar
-        Bundle 'vim-pandoc/vim-pandoc'
-
-        " american abbreviations
-        Bundle 'tpope/vim-abolish'
-        Bundle 'nelstrom/vim-americanize'
 
         " trailing whitespace function
         Bundle 'bronson/vim-trailing-whitespace'
