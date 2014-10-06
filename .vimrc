@@ -33,6 +33,9 @@ set nocompatible
         " show indendation level
         Bundle 'Yggdroot/indentLine'
 
+        " rainbow parentheses
+        Bundle 'amdt/vim-niji'
+
         " python IDE support
         " Bundle 'klen/python-mode'
 
