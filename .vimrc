@@ -198,7 +198,7 @@ set nocompatible
         let g:vimroom_width=120
         let g:vimroom_clear_line_numbers=0
     """ airline options
-        let g:airline_powerline_fonts = 1       " needs powerline patched fonts
+        let g:airline_powerline_fonts = 0
         let g:airline_mode_map = {
             \ '__' : '-',
             \ 'n'  : 'N',
