@@ -12,44 +12,14 @@ set nocompatible
         " much much nicer status line
         Bundle 'bling/vim-airline'
 
-        " show git tree in airline
-        Bundle 'tpope/vim-fugitive'
-
-        " powerfull comment engine
-        Bundle 'vim-scripts/tComment'
-
         " automatic closing of parenthesis,brackets
         Bundle 'Raimondi/delimitMate'
-
-        " easy table generation and text line ups
-        Bundle 'godlygeek/tabular'
-
-        " make a tasklist from FIXME, TODO comments
-        Bundle 'tasklist.vim'
 
         " show indendation level
         Bundle 'Yggdroot/indentLine'
 
-        " rainbow parentheses
-        Bundle 'amdt/vim-niji'
-
-        " python IDE support
-        " Bundle 'klen/python-mode'
-
-        " Snippets like textmate
-        " REQUIREMENTS: vim-addon-mw-utils, tlib_vim, vim-snippets
-        Bundle 'MarcWeber/vim-addon-mw-utils'
-        Bundle 'tomtom/tlib_vim'
-        Bundle 'garbas/vim-snipmate'
-
         " Ledger bindings for vim
         Bundle 'ledger/vim-ledger'
-
-        " nice stuff for csv files
-        Bundle 'chrisbra/csv.vim'
-
-        " better access to buffers
-        Bundle 'jlanzarotta/bufexplorer'
 
         " trailing whitespace function
         Bundle 'bronson/vim-trailing-whitespace'
@@ -59,29 +29,13 @@ set nocompatible
         Bundle 'smancill/conky-syntax.vim'
         Bundle 'tejr/vim-tmux'
         Bundle 'vim-scripts/scons.vim'
-    """ Colorschemes
-        Bundle 'mayansmoke'
-        Bundle 'nanotech/jellybeans.vim'
-        Bundle 'gregsexton/Atom'
-        Bundle 'bwyrosdick/vim-blackboard'
-        Bundle 'altercation/vim-colors-solarized'
-        Bundle 'lsdr/monokai'
-        Bundle 'chriskempson/base16-vim'
 """ User interface
     """ Syntax highlighting
         filetype plugin indent on                   " detect file plugin+indent
         syntax on                                   " syntax highlighting
-        set t_Co=16                                " 256-colors
         set background=dark
         au BufRead, BufNewFile *.txt set ft=sh      " opens .txt with highlighting
         """ Solarized Color scheme
-            if has('gui_running')
-                colorscheme monokai
-            else
-                let base16_scheme=$BASE16_SCHEME
-                let base16_color='base16-'.base16_scheme
-                execute 'colorscheme '.base16_color
-            endif
     """ Interface general
         set number                                  " line numbers
         set scrolloff=4                             " lines above/below cursor
@@ -182,21 +136,6 @@ set nocompatible
     set softtabstop=4                               " "tab" feels like <tab>
     set tabstop=4                                   " replace <TAB> w/4 spaces
 """ plugins
-    """ python-mode
-        let g:pymode = 1                            " enable everything
-        let g:pymode_trim_whitespaces = 1
-        let g:pymode_folding = 0                    " use global folding setting
-        let g:pymode_doc = 0
-        let g:pymode_doc_bind = '<leader>d'         " bind normal mode for docs
-        nnoremap <leader>pep :PymodeLintAuto<CR>
-        let g:pymode_lint_on_write = 1              " lint check on every save
-        " for cython files only check pep8
-        au BufNewFile,BufRead *.pxd,*.pyx let g:pymode_lint_checkers = ['pep8']
-        let g:pymode_syntax_all = 1
-        let g:pymode_syntax_print_as_function = 1
-    """ VimRoom
-        let g:vimroom_width=120
-        let g:vimroom_clear_line_numbers=0
     """ airline options
         let g:airline_powerline_fonts = 0
         let g:airline_mode_map = {
@@ -225,7 +164,7 @@ set nocompatible
         " disable ex-mode for good
         nnoremap Q <nop>
         " map noh to <leader>l
-        nnoremap <leader>l :nohlsearch<CR>
+        nnoremap <leader>bh :nohlsearch<CR>
         " make Y consistend with D and C
         nnoremap Y y$
         " easy window navigation
@@ -235,14 +174,9 @@ set nocompatible
         noremap <C-l> <C-w>l
         " close buffer for good
         noremap Q :bd<cr>
-        " open vimrc in vsplit window
-        nnoremap <leader>ev :vsplit $MYVIMRC<cr>
-        " source vimrc
-        nnoremap <leader>sv :source $MYVIMRC<cr>
         " better jumps to line start and end
         nnoremap H 0
         nnoremap L $
-        " close buffers :b
         " remove trailing whitespaces
         nnoremap <leader>dw :FixWhitespace<cr>
         " use <leader>rp to reformat a paragraph
@@ -254,24 +188,6 @@ set nocompatible
         " visual mode pressing * or # searches for current selection
         vnoremap <silent> * :call VisualSelection('f')<CR>
         vnoremap <silent> # :call VisualSelection('b')<CR>
-        nnoremap <F5> :update<cr>:make<cr>
         " short cut to paragraph reformating
         nnoremap <leader>p vipgq$
         vnoremap <leader>p ipgq$v
-        " tasklist buttons
-        nnoremap T :Tasklist<CR>
-        " Insert a table headers separator line below the current line,
-        " -- adjusted to the current line as headers line
-        nnoremap <F4>t yyp:s/\v\S.{-}\ze(\s{2}\S\|$)/\=substitute(submatch(0),'.','-','g')/g<CR>
-    """ Learn vim scripting the Hard way examples
-        " put single quotes around visual marked text and exit to normal-mode
-        vnoremap <leader>' <esc>`<i'<esc>`>a'<esc>
-        " deavtivate arrow key in normal mode
-        nnoremap <up> <nop>
-        nnoremap <down> <nop>
-        nnoremap <left> <nop>
-        nnoremap <right> <nop>
-        inoremap <up> <nop>
-        inoremap <down> <nop>
-        inoremap <left> <nop>
-        inoremap <right> <nop>
