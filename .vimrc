@@ -153,6 +153,8 @@ set nocompatible
             \ }
 """ Keybindings
     """ General
+        inoremap fd <Esc>
+        vnoremap fd <Esc>
         " Yank{copy) to system clipboard
         noremap <leader>y "+y
         " Treat wrapped lines as normal lines
