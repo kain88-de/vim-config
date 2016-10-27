@@ -47,8 +47,6 @@ set nocompatible
                    \.avi,.mkv,.so
         set wildmenu                                " better auto complete
         set wildmode=longest,list                   " bash like autocompletion
-        "show marker after 80 chars and another after 120
-        let &colorcolumn="80,".join(range(120,999),",")
     """ Gvim
         set guifont=Inconsolata\ for\ Powerline\ Medium\ 13
         set guioptions-=m                       " remove menubar
